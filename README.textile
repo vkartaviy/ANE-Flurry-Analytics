@@ -1,0 +1,40 @@
+h1. Air Native Extension for  Flurry analytics on iOS
+
+This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html for "Flurry analytics":http://www.flurry.com/ on the iOS platform.
+
+h3. Getting Started
+
+This extension doesn't include a binary compiled native extrension due to licensing limitations of the Flurry analytics code. Instead you should download the Flurry analytics code from your Flurry account and add it to this project, then run the build script to create the extension.
+
+h3. Building
+
+* Download the Flurry analytics code from your Flurry account.
+* Add the downloaded files FlurryAnalytics.h & libFlurryAnalytics.a to the ios/FlurryIosExtension/FlurryAnalytics folder in the project.
+* Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.
+* Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
+** The certificate is required by the build script, but may be a self-signed certificate created by Adobe Air.
+* Run the ant build script build.xml. This creates the native extension, and associated swc file, inside the bin folder.
+
+h3. Developers
+
+* "Stick Sports":http://www.sticksports.com/
+
+h2. License
+
+Air Native Extension for  Flurry analytics on iOS
+.................................................
+
+Author: Richard Lord
+Owner: Stick Sports Ltd.
+http://www.sticksports.com
+
+Copyright (c) 2011, Stick Sports Ltd.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+* Neither the name of Stick Sports Ltd. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
