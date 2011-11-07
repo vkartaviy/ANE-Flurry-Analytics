@@ -53,6 +53,9 @@ package com.sticksports.nativeExtensions
 			}
 		}
 		
+		/**
+		 * Is the extension supported
+		 */
 		public static function get isSupported() : Boolean
 		{
 			initExtension();
