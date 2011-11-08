@@ -4,7 +4,7 @@ This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensi
 
 h3. Getting Started
 
-This extension doesn't include a binary compiled native extrension due to licensing limitations of the Flurry analytics code. Instead you should download the Flurry analytics code from your Flurry account and add it to this project, then run the build script to create the extension.
+This extension doesn't include a binary compiled native extension due to licensing limitations of the Flurry analytics code. Instead you should download the Flurry analytics code from your Flurry account and add it to this project, then run the build script to create the extension.
 
 h3. Building
 
@@ -12,7 +12,7 @@ h3. Building
 * Add the downloaded files FlurryAnalytics.h & libFlurryAnalytics.a to the ios/FlurryIosExtension/FlurryAnalytics folder in the project.
 * Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.
 * Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
-** The certificate is required by the build script, but may be a self-signed certificate created by Adobe Air.
+** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air.
 * Run the ant build script build.xml. This creates the native extension, and associated swc file, inside the bin folder.
 
 h3. Developers

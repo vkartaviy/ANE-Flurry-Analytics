@@ -17,9 +17,9 @@
 <p>This is a Native Extension for Adobe Air for use with the iOS platform.
 The extension provides a bridge from an Adobe Air application to the Flurry analytics library for iOS.</p>
 
-<p>Due to distribution restrictions, the extension does not contain the FLurry analytics library. You should
-download the library from your Flurry analytics account and build the extension according to the following 
-instructions.</p>
+<p>This extension doesn't include a binary compiled native extension due to licensing limitations of the 
+Flurry analytics code. Instead you should download the Flurry analytics code from your Flurry account and 
+add it to this project, then run the build script to create the extension. Detailed instructions follow.</p>
 
 <h2>Building the extension</h2>
 <ul>
@@ -29,7 +29,7 @@ to the ios/FlurryIosExtension folder in the project.</li>
 <li>Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.</li>
 <li>Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the 
 properties in this file to match your system.</li>
-<ul><li>The certificate is required by the build script, but may be a self-signed certificate created by Adobe Air.</li></ul>
+<ul><li>A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air.</li></ul>
 <li>Run the ant build script build.xml. This creates the native extension, and associated swc file, inside the bin folder.</li>
 </ul>
 
