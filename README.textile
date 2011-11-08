@@ -15,6 +15,48 @@ h3. Building
 ** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air.
 * Run the ant build script build.xml. This creates the native extension, and associated swc file, inside the bin folder.
 
+h3. Using the extension
+
+h4. Start a Flurry session
+
+At its simplest, you initialize the extension with your application's identifier as follows
+
+@Flurry.startSession( "your flurry id" );@
+
+You should only start the session once, after which you can log as many events as you wish.
+
+h4. Log a simple event
+
+You may then log events with Flurry like this
+
+@Flurry.logEvent( "User did something" );@
+
+h4. Log an event with parameters
+
+You can pass parameters through to a Flurry event via a simple object, as follows
+
+@Flurry.logEvent( "Screen resolution", { width : Capabilities.screenResolutionX, height : Capabilities.screenResolutionY, dpi : Capabilities.screenDPI } );@
+
+h4. Log a timed event
+
+Flurry will also log timed events. This is a two-step process. You first start the timed event.
+
+@Flurry.startTimedEvent( "User playing game" );@
+
+Then, later, you end the timed event.
+
+@Flurry.endTimedEvent( "User playing game" );@
+
+h4. Log an error
+
+You can also log errors with Flurry
+
+@Flurry.logError( "NullPointer", "Attempt to use a reference to a null pointer" );@
+
+h3. More info
+
+That's just a starter. All the features of the Flurry api have been implemented. Read the enclosed documentation for all the features.
+
 h3. Developers
 
 * "Stick Sports":http://www.sticksports.com/
