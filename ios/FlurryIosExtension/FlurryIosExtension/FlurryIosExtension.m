@@ -46,7 +46,7 @@ DEFINE_ANE_FUNCTION( initNativeCode )
 DEFINE_ANE_FUNCTION( setAppVersion )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) == FRE_OK )
     {
         NSString* version = [NSString stringWithUTF8String: (char*) value];
@@ -130,7 +130,7 @@ DEFINE_ANE_FUNCTION( setSecureTransportEnabled )
 DEFINE_ANE_FUNCTION( startSession )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) == FRE_OK )
     {
         NSString* sessionId = [NSString stringWithUTF8String: (char*) value];
@@ -142,7 +142,7 @@ DEFINE_ANE_FUNCTION( startSession )
 DEFINE_ANE_FUNCTION( logEvent )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) != FRE_OK ) return NULL;
     NSString* event = [NSString stringWithUTF8String: (char*) value];
     if( argc == 2 )
@@ -159,7 +159,7 @@ DEFINE_ANE_FUNCTION( logEvent )
             NSString* value;
             
             FREObject fo;
-            uint8_t* foString = NULL;
+            const uint8_t* foString = NULL;
             uint32_t foLength = 0;
             
             for( i = 0; i < count; ++i )
@@ -192,22 +192,23 @@ DEFINE_ANE_FUNCTION( logEvent )
 DEFINE_ANE_FUNCTION( logError )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *valueId = NULL;
+    const uint8_t *valueMessage = NULL;
     
-    if( FREGetObjectAsUTF8( argv[0], &length, &value ) != FRE_OK ) return NULL;
-    NSString* id = [NSString stringWithUTF8String: (char*) value];
+    if( FREGetObjectAsUTF8( argv[0], &length, &valueId ) != FRE_OK ) return NULL;
+    NSString* errorId = [NSString stringWithUTF8String: (char*) valueId];
 
-    if( FREGetObjectAsUTF8( argv[0], &length, &value ) != FRE_OK ) return NULL;
-    NSString* message = [NSString stringWithUTF8String: (char*) value];
+    if( FREGetObjectAsUTF8( argv[1], &length, &valueMessage ) != FRE_OK ) return NULL;
+    NSString* message = [NSString stringWithUTF8String: (char*) valueMessage];
     
-    [FlurryAnalytics logError:id message:message error:nil];
+    [FlurryAnalytics logError:errorId message:message error:nil];
     return NULL;
 }
 
 DEFINE_ANE_FUNCTION( startTimedEvent )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) != FRE_OK ) return NULL;
     NSString* event = [NSString stringWithUTF8String: (char*) value];
     if( argc == 2 )
@@ -224,7 +225,7 @@ DEFINE_ANE_FUNCTION( startTimedEvent )
             NSString* value;
             
             FREObject fo;
-            uint8_t* foString;
+            const uint8_t* foString;
             uint32_t foLength;
             
             for( i = 0; i < count; ++i )
@@ -257,7 +258,7 @@ DEFINE_ANE_FUNCTION( startTimedEvent )
 DEFINE_ANE_FUNCTION( endTimedEvent )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) != FRE_OK ) return NULL;
     NSString* event = [NSString stringWithUTF8String: (char*) value];
     if( argc == 2 )
@@ -274,7 +275,7 @@ DEFINE_ANE_FUNCTION( endTimedEvent )
             NSString* value;
             
             FREObject fo;
-            uint8_t* foString;
+            const uint8_t* foString;
             uint32_t foLength;
             
             for( i = 0; i < count; ++i )
@@ -307,7 +308,7 @@ DEFINE_ANE_FUNCTION( endTimedEvent )
 DEFINE_ANE_FUNCTION( setUserId )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) == FRE_OK )
     {
         NSString* userId = [NSString stringWithUTF8String: (char*) value];
@@ -329,7 +330,7 @@ DEFINE_ANE_FUNCTION( setUserAge )
 DEFINE_ANE_FUNCTION( setUserGender )
 {
     uint32_t length = 0;
-    uint8_t *value = NULL;
+    const uint8_t *value = NULL;
     if( FREGetObjectAsUTF8( argv[0], &length, &value ) == FRE_OK )
     {
         NSString* userGender = [NSString stringWithUTF8String: (char*) value];
@@ -406,7 +407,7 @@ DEFINE_ANE_FUNCTION( setEventLoggingEnabled )
     return NULL;
 }
 
-void ContextInitializer( void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet )
+void FlurryContextInitializer( void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet )
 {
 	*numFunctionsToSet = 19;
     
@@ -491,19 +492,19 @@ void ContextInitializer( void* extData, const uint8_t* ctxType, FREContext ctx, 
 	*functionsToSet = func;
 }
 
-void ContextFinalizer( FREContext ctx )
+void FlurryContextFinalizer( FREContext ctx )
 {
 	return;
 }
 
-void ExtensionInitializer( void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet ) 
+void FlurryExtensionInitializer( void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet ) 
 { 
     extDataToSet = NULL;  // This example does not use any extension data. 
-    *ctxInitializerToSet = &ContextInitializer; 
-    *ctxFinalizerToSet = &ContextFinalizer; 
+    *ctxInitializerToSet = &FlurryContextInitializer; 
+    *ctxFinalizerToSet = &FlurryContextFinalizer; 
 }
 
-void ExtensionFinalizer()
+void FlurryExtensionFinalizer()
 {
     return;
 }

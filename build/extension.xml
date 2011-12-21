@@ -1,12 +1,12 @@
 <extension xmlns="http://ns.adobe.com/air/extension/2.5">
 	<id>com.sticksports.nativeExtensions.Flurry</id>
-	<versionNumber>0.1.0</versionNumber>
+	<versionNumber>0.2.0</versionNumber>
 	<platforms>
 		<platform name="iPhone-ARM">
 			<applicationDeployment>
 				<nativeLibrary>libFlurryIosExtension.a</nativeLibrary>
-				<initializer>ExtensionInitializer</initializer>
-				<finalizer>ExtensionFinalizer</finalizer>
+				<initializer>FlurryExtensionInitializer</initializer>
+				<finalizer>FlurryExtensionFinalizer</finalizer>
 			</applicationDeployment>
 		</platform>
 		<platform name="default">
