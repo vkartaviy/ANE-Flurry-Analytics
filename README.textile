@@ -2,18 +2,26 @@ h1. Air Native Extension for  Flurry analytics on iOS
 
 This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html for "Flurry analytics":http://www.flurry.com/ on the iOS platform.
 
-h3. Getting Started
+h3. Version
 
-This extension doesn't include a binary compiled native extension due to licensing limitations of the Flurry analytics code. Instead you should download the Flurry analytics code from your Flurry account and add it to this project, then run the build script to create the extension.
+This is version 0.3 of this extension. The compiled extension contains version 3.0.5 of the Flurry Analytics library.
+
+If you wish to use a different version of the Flurry Analytics library, you may do so by following the instructions below to compile the extension.
+
+h3. Binary files
+
+The bin folder contains the compiled extension and the default swc, which can be used for local testing if required by your development environment (Flash Builder shouldn't need it, but other IDEs may).
 
 h3. Building
 
+Requirements - Adobe Air SDK 3.1 or later, XCode IDE, iOS SDK 5.0 or later, Flurry Analytics iPhone SDK
+
 * Download the Flurry analytics code from your Flurry account.
-* Add the downloaded files FlurryAnalytics.h & libFlurryAnalytics.a to the ios/FlurryIosExtension/FlurryAnalytics folder in the project.
+* Add the downloaded folder FlurryAnalytics (containing FlurryAnalytics.h & libFlurryAnalytics.a) to the ios/FlurryIosExtension folder in the project.
 * Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.
 * Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
 ** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air.
-* Run the ant build script build.xml. This creates the native extension, and associated swc file, inside the bin folder.
+* Run the ant build script build.xml. This creates the native extension, and default swc file, inside the bin folder.
 
 h3. Using the extension
 
@@ -56,6 +64,10 @@ You can also log errors with Flurry
 h3. More info
 
 That's just a starter. All the features of the Flurry api have been implemented. Read the enclosed documentation for all the features.
+
+h3. Compiling your project
+
+The extension requires that your project is built against version 5 of the iOS SDK. It doesn't require version 5 at run-time (version 4 is sufficient), but it is required at compile-time. Due to this limitation, any project using the extension must be compiled on a computer running Mac OS X and with version 5 or later of the iOS SDK. Specify the path to the SDK when compiling the project, using the functionality built in to your IDE or the platformsdk parameter if building with adt from the command line or a build script. And use Adobe Air SDK 3.1 or later
 
 h3. Developers
 
