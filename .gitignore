@@ -7,9 +7,12 @@ FlurryAnalytics.h
 libFlurryAnalytics.a
 FlashRuntimeExtensions.h
 
-# Eclipse
+# Eclipse FDT
 .settings/*
 .project
+
+# Xcode
+xcuserdata
 
 # OS X
 Icon

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Flurry Extension Build Scripts" default="all">
+<project name="Air Native Extension Build Scripts" default="all">
 	
 	<property file="build.config"/>
 		
@@ -8,14 +8,14 @@
 	<target name="ios" description="Build iOS Library">
 		<mkdir dir="../temp/ios/build/"/>
 
-		<exec executable="xcodebuild" failonerror="true" dir="../ios/FlurryIosExtension">
-			<arg line='-project FlurryIosExtension.xcodeproj'/>
-			<arg line='-target FlurryIosExtension'/>
+		<exec executable="xcodebuild" failonerror="true" dir="../ios/${name}IosExtension">
+			<arg line='-project ${name}IosExtension.xcodeproj'/>
+			<arg line='-target ${name}IosExtension'/>
 			<arg line='-configuration Release'/>
 			<arg line='SYMROOT=../../temp/ios/build/'/>
 		</exec>
 		
-		<copy file="../temp/ios/build/Release-iphoneos/libFlurryIosExtension.a" todir="../temp/ios" overwrite="true"/>
+		<copy file="../temp/ios/build/Release-iphoneos/lib${name}IosExtension.a" todir="../temp/ios" overwrite="true"/>
 		<copy file="../ios/FlurryIosExtension/FlurryAnalytics/libFlurryAnalytics.a" todir="../temp/ios" overwrite="true"/>
 		
 		<delete dir="../temp/ios/build/"/>
@@ -87,8 +87,8 @@
 			<arg line="-platform default -C default/ ."/>
 		</exec>
 		
-		<move file="../temp/Flurry.ane" todir="../bin"/>
-		<move file="../temp/default/Flurry.swc" todir="../bin"/>
+		<move file="../temp/${name}.ane" todir="../bin"/>
+		<move file="../temp/default/${name}.swc" todir="../bin"/>
 		<delete dir="../temp"/>
 	</target>
 </project>
