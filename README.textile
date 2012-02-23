@@ -73,6 +73,10 @@ h3. Developers
 
 * "Stick Sports":http://www.sticksports.com/
 
+h3. Games using this extension
+
+* "Stick Cricket Super Sixes":http://itunes.apple.com/app/stick-cricket-super-sixes/id483135193?ls=1&mt=8
+
 h2. License
 
 Air Native Extension for  Flurry analytics on iOS
