@@ -1,12 +1,19 @@
 <extension xmlns="http://ns.adobe.com/air/extension/3.1">
 	<id>com.sticksports.nativeExtensions.Flurry</id>
-	<versionNumber>0.3.1</versionNumber>
+	<versionNumber>0.4.0</versionNumber>
 	<platforms>
 		<platform name="iPhone-ARM">
 			<applicationDeployment>
 				<nativeLibrary>libFlurryIosExtension.a</nativeLibrary>
 				<initializer>FlurryExtensionInitializer</initializer>
 				<finalizer>FlurryExtensionFinalizer</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>FlurryAndroidExtension.jar</nativeLibrary>
+				<initializer>com.sticksports.nativeExtensions.flurry.FlurryExtension</initializer>
+				<finalizer>com.sticksports.nativeExtensions.flurry.FlurryExtension</finalizer>
 			</applicationDeployment>
 		</platform>
 		<platform name="default">

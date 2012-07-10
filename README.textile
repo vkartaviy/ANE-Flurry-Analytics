@@ -1,10 +1,10 @@
-h1. Air Native Extension for  Flurry analytics on iOS
+h1. Air Native Extension for Flurry analytics on iOS & Android
 
-This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html for "Flurry analytics":http://www.flurry.com/ on the iOS platform.
+This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html for "Flurry analytics":http://www.flurry.com/ on the iOS and Android platforms.
 
 h3. Version
 
-This is version 0.3.1 of this extension. The compiled extension contains version 3.0.9 of the Flurry Analytics library.
+This is version 0.4.0 of this extension. The compiled extension contains version 3.0.9 of the Flurry Analytics library for iOS and version 2.2.5 of the Flurry Analytics library for Android.
 
 If you wish to use a different version of the Flurry Analytics library, you may do so by following the instructions below to compile the extension.
 
@@ -14,11 +14,16 @@ The bin folder contains the compiled extension and the default swc, which can be
 
 h3. Building
 
-Requirements - Adobe Air SDK 3.1 or later, XCode IDE, iOS SDK 5.0 or later, Flurry Analytics iPhone SDK
+Requirements - Adobe Air SDK 3.1 or later, XCode IDE, iOS SDK 5.0 or later, Android SDK 2.2 or later, Java SDK, Flurry Analytics iPhone SDK and Flurry Analytics Android SDK, Apache Ant
 
-* Download the Flurry analytics code from your Flurry account.
-* Add the downloaded folder FlurryAnalytics (containing FlurryAnalytics.h & libFlurryAnalytics.a) to the ios/FlurryIosExtension folder in the project.
-* Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.
+* iOS
+** Download the Flurry analytics code from your Flurry account.
+** From the iOS Flurry SDK add the downloaded folder FlurryAnalytics (containing FlurryAnalytics.h & libFlurryAnalytics.a) to the ios/FlurryIosExtension folder in the project.
+** Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.
+* Android
+** Download the Flurry analytics code from your Flurry account.
+** From the Android Flurry SDK add the downloaded file FlurryAgent.jar to the android/libs folder in the project.
+** Add the FlashRuntimeExtensions.jar file from the Adobe Air sdk to the android/libs folder in the project.
 * Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
 ** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air.
 * Run the ant build script build.xml. This creates the native extension, and default swc file, inside the bin folder.
@@ -63,7 +68,7 @@ You can also log errors with Flurry
 
 h3. More info
 
-That's just a starter. All the features of the Flurry api have been implemented. Read the enclosed documentation for all the features.
+That's just a starter. All the features of the Flurry api have been implemented. Read the documentation in the Actionscript source code for all the features.
 
 h3. Compiling your project
 
@@ -75,12 +80,12 @@ h3. Developers
 
 h3. Games using this extension
 
+* "Stick Tennis":http://itunes.apple.com/app/stick-tennis/id507086545?ls=1&mt=8
 * "Stick Cricket Super Sixes":http://itunes.apple.com/app/stick-cricket-super-sixes/id483135193?ls=1&mt=8
 
 h2. License
 
-Air Native Extension for  Flurry analytics on iOS
-.................................................
+Air Native Extension for Flurry analytics on iOS & Android
 
 Author: Richard Lord
 Owner: Stick Sports Ltd.
