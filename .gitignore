@@ -11,6 +11,14 @@ FlashRuntimeExtensions.h
 .settings/*
 .project
 
+# Eclipse JDT
+android/bin
+android/gen
+android/res
+.classpath
+proguard-project.txt
+project.properties
+
 # Xcode
 xcuserdata
 
