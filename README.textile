@@ -38,6 +38,12 @@ At its simplest, you initialize the extension with your application's identifier
 
 You should only start the session once, after which you can log as many events as you wish.
 
+h4. End a Flurry session
+
+On Android, this ends the current session (and sends the accumulated event data to Flurry). On iOS it does nothing, the session automatically ends when your app enters the background.
+
+@Flurry.endSession();@
+
 h4. Log a simple event
 
 You may then log events with Flurry like this

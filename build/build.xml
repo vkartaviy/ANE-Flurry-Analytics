@@ -16,7 +16,6 @@
 		</exec>
 		
 		<copy file="../temp/ios/build/Release-iphoneos/lib${name}IosExtension.a" todir="../temp/ios" overwrite="true"/>
-		<copy file="../ios/FlurryIosExtension/FlurryAnalytics/libFlurryAnalytics.a" todir="../temp/ios" overwrite="true"/>
 		
 		<delete dir="../temp/ios/build/"/>
 	</target>
