@@ -14,6 +14,8 @@ The bin folder contains the compiled extension and the default swc, which can be
 
 h3. Building
 
+If you want to compile the extension from scratch (e.g. to include a different version of the Flurry SDK) this is how to do it.
+
 Requirements - Adobe Air SDK 3.1 or later, XCode IDE, iOS SDK 5.0 or later, Android SDK 2.2 or later, Java SDK, Flurry Analytics iPhone SDK and Flurry Analytics Android SDK, Apache Ant
 
 * iOS
@@ -78,7 +80,11 @@ That's just a starter. All the features of the Flurry api have been implemented.
 
 h3. Compiling your project
 
-The extension requires that your project is built against version 5 of the iOS SDK. It doesn't require version 5 at run-time (version 4 is sufficient), but it is required at compile-time. Due to this limitation, any project using the extension must be compiled on a computer running Mac OS X and with version 5 or later of the iOS SDK. Specify the path to the SDK when compiling the project, using the functionality built in to your IDE or the platformsdk parameter if building with adt from the command line or a build script. And use Adobe Air SDK 3.1 or later
+The extension requires that your project is built against version 5 of the iOS SDK. It doesn't require version 5 at run-time (version 4 is sufficient), but it is required at compile-time.
+
+With Air 3.3 or later, just include the extension in the usual way.
+
+With Air 3.1 or 3.2, your project it must be compiled on a computer running Mac OS X and with version 5 or later of the iOS SDK. Specify the path to the iOS SDK when compiling the project using the functionality built in to your IDE or the platformsdk parameter if building with adt from the command line or a build script.
 
 h3. Developers
 
