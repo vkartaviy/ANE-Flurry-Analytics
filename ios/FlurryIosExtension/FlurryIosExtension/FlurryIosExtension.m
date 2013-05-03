@@ -8,30 +8,30 @@
 
 #import <Foundation/Foundation.h>
 #import "FlashRuntimeExtensions.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 #import "Flurry_TypeConversion.h"
 
 #define DEFINE_ANE_FUNCTION(fn) FREObject (fn)(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 
 #define MAP_FUNCTION(fn, data) { (const uint8_t*)(#fn), (data), &(fn) }
 
-Flurry_TypeConversion* typeConverter;
+Flurry_TypeConversion* flurryTypeConverter;
 
 DEFINE_ANE_FUNCTION( flurry_setAppVersion )
 {
     NSString* version;
-    if( [typeConverter FREGetObject:argv[0] asString:&version ] == FRE_OK )
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&version ] == FRE_OK )
     {
-        [FlurryAnalytics setAppVersion:version];
+        [Flurry setAppVersion:version];
     }
     return NULL;
 }
 
 DEFINE_ANE_FUNCTION( flurry_getFlurryAgentVersion )
 {
-    NSString* version = [FlurryAnalytics getFlurryAgentVersion];
+    NSString* version = [Flurry getFlurryAgentVersion];
     FREObject result;
-    if ( [typeConverter FREGetString:version asObject:&result ] == FRE_OK )
+    if ( [flurryTypeConverter FREGetString:version asObject:&result ] == FRE_OK )
     {
         return result;
     }
@@ -43,7 +43,7 @@ DEFINE_ANE_FUNCTION( flurry_setSessionContinueSeconds )
     int32_t value = 0;
     if (FREGetObjectAsInt32( argv[0], &value ) == FRE_OK )
     {
-        [FlurryAnalytics setSessionContinueSeconds:value];
+        [Flurry setSessionContinueSeconds:value];
     }
     return NULL;
 }
@@ -55,11 +55,11 @@ DEFINE_ANE_FUNCTION( flurry_setSecureTransportEnabled )
     {
         if( value == 0 )
         {
-            [FlurryAnalytics setSecureTransportEnabled:NO];
+            [Flurry setSecureTransportEnabled:NO];
         }
         else
         {
-            [FlurryAnalytics setSecureTransportEnabled:YES];
+            [Flurry setSecureTransportEnabled:YES];
         }
     }
     return NULL;
@@ -68,9 +68,9 @@ DEFINE_ANE_FUNCTION( flurry_setSecureTransportEnabled )
 DEFINE_ANE_FUNCTION( flurry_startSession )
 {
     NSString* sessionId;
-    if( [typeConverter FREGetObject:argv[0] asString:&sessionId ] == FRE_OK )
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&sessionId ] == FRE_OK )
     {
-        [FlurryAnalytics startSession:sessionId];
+        [Flurry startSession:sessionId];
     }
     return NULL;
 }
@@ -83,7 +83,7 @@ DEFINE_ANE_FUNCTION( flurry_endSession )
 DEFINE_ANE_FUNCTION( flurry_logEvent )
 {
     NSString* event;
-    if( [typeConverter FREGetObject:argv[0] asString:&event ] != FRE_OK ) return NULL;
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&event ] != FRE_OK ) return NULL;
     
     if( argc == 2 )
     {
@@ -102,24 +102,24 @@ DEFINE_ANE_FUNCTION( flurry_logEvent )
             for( i = 0; i < count; ++i )
             {
                 if( FREGetArrayElementAt( array, i * 2, &fo ) != FRE_OK ) continue;
-                if( [typeConverter FREGetObject:fo asString:&key ] != FRE_OK ) continue;
+                if( [flurryTypeConverter FREGetObject:fo asString:&key ] != FRE_OK ) continue;
                 
                 if( FREGetArrayElementAt( array, i * 2 + 1, &fo ) != FRE_OK ) continue;
-                if( [typeConverter FREGetObject:fo asString:&value ] != FRE_OK ) continue;
+                if( [flurryTypeConverter FREGetObject:fo asString:&value ] != FRE_OK ) continue;
                 
                 [parameters setValue:value forKey:key];
             }
             
-            [FlurryAnalytics logEvent:event withParameters:parameters];
+            [Flurry logEvent:event withParameters:parameters];
         }
         else
         {
-            [FlurryAnalytics logEvent:event];
+            [Flurry logEvent:event];
         }
     }
     else
     {
-        [FlurryAnalytics logEvent:event];
+        [Flurry logEvent:event];
     }
     return NULL;
 }
@@ -127,19 +127,19 @@ DEFINE_ANE_FUNCTION( flurry_logEvent )
 DEFINE_ANE_FUNCTION( flurry_logError )
 {
     NSString* errorId;
-    if( [typeConverter FREGetObject:argv[0] asString:&errorId ] != FRE_OK ) return NULL;
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&errorId ] != FRE_OK ) return NULL;
 
     NSString* message;
-    if( [typeConverter FREGetObject:argv[1] asString:&message ] != FRE_OK ) return NULL;
+    if( [flurryTypeConverter FREGetObject:argv[1] asString:&message ] != FRE_OK ) return NULL;
     
-    [FlurryAnalytics logError:errorId message:message error:nil];
+    [Flurry logError:errorId message:message error:nil];
     return NULL;
 }
 
 DEFINE_ANE_FUNCTION( flurry_startTimedEvent )
 {
     NSString* event;
-    if( [typeConverter FREGetObject:argv[0] asString:&event ] != FRE_OK ) return NULL;
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&event ] != FRE_OK ) return NULL;
 
     if( argc == 2 )
     {
@@ -159,24 +159,24 @@ DEFINE_ANE_FUNCTION( flurry_startTimedEvent )
             for( i = 0; i < count; ++i )
             {
                 if( FREGetArrayElementAt( array, i * 2, &fo ) != FRE_OK ) continue;
-                if( [typeConverter FREGetObject:fo asString:&key ] != FRE_OK ) continue;
+                if( [flurryTypeConverter FREGetObject:fo asString:&key ] != FRE_OK ) continue;
                 
                 if( FREGetArrayElementAt( array, i * 2 + 1, &fo ) != FRE_OK ) continue;
-                if( [typeConverter FREGetObject:fo asString:&value ] != FRE_OK ) continue;
+                if( [flurryTypeConverter FREGetObject:fo asString:&value ] != FRE_OK ) continue;
                 
                 [parameters setValue:value forKey:key];
             }
             
-            [FlurryAnalytics logEvent:event withParameters:parameters timed:YES];
+            [Flurry logEvent:event withParameters:parameters timed:YES];
         }
         else
         {
-            [FlurryAnalytics logEvent:event timed:YES];
+            [Flurry logEvent:event timed:YES];
         }
     }
     else
     {
-        [FlurryAnalytics logEvent:event timed:YES];
+        [Flurry logEvent:event timed:YES];
     }
     return NULL;
 }
@@ -184,7 +184,7 @@ DEFINE_ANE_FUNCTION( flurry_startTimedEvent )
 DEFINE_ANE_FUNCTION( flurry_endTimedEvent )
 {
     NSString* event;
-    if( [typeConverter FREGetObject:argv[0] asString:&event ] != FRE_OK ) return NULL;
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&event ] != FRE_OK ) return NULL;
     
     if( argc == 2 )
     {
@@ -204,24 +204,24 @@ DEFINE_ANE_FUNCTION( flurry_endTimedEvent )
             for( i = 0; i < count; ++i )
             {
                 if( FREGetArrayElementAt( array, i * 2, &fo ) != FRE_OK ) continue;
-                if( [typeConverter FREGetObject:fo asString:&key ] != FRE_OK ) continue;
+                if( [flurryTypeConverter FREGetObject:fo asString:&key ] != FRE_OK ) continue;
                 
                 if( FREGetArrayElementAt( array, i * 2 + 1, &fo ) != FRE_OK ) continue;
-                if( [typeConverter FREGetObject:fo asString:&value ] != FRE_OK ) continue;
+                if( [flurryTypeConverter FREGetObject:fo asString:&value ] != FRE_OK ) continue;
                 
                 [parameters setValue:value forKey:key];
             }
             
-            [FlurryAnalytics endTimedEvent:event withParameters:parameters];
+            [Flurry endTimedEvent:event withParameters:parameters];
         }
         else
         {
-            [FlurryAnalytics endTimedEvent:event withParameters:Nil];
+            [Flurry endTimedEvent:event withParameters:Nil];
         }
     }
     else
     {
-        [FlurryAnalytics endTimedEvent:event withParameters:Nil];
+        [Flurry endTimedEvent:event withParameters:Nil];
     }
     return NULL;
 }
@@ -229,9 +229,9 @@ DEFINE_ANE_FUNCTION( flurry_endTimedEvent )
 DEFINE_ANE_FUNCTION( flurry_setUserId )
 {
     NSString* userId;
-    if( [typeConverter FREGetObject:argv[0] asString:&userId ] == FRE_OK )
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&userId ] == FRE_OK )
     {
-        [FlurryAnalytics setUserID:userId];
+        [Flurry setUserID:userId];
     }
     return NULL;
 }
@@ -241,7 +241,7 @@ DEFINE_ANE_FUNCTION( flurry_setUserAge )
     int32_t value = 0;
     if (FREGetObjectAsInt32( argv[0], &value ) == FRE_OK )
     {
-        [FlurryAnalytics setAge:value];
+        [Flurry setAge:value];
     }
     return NULL;
 }
@@ -249,9 +249,9 @@ DEFINE_ANE_FUNCTION( flurry_setUserAge )
 DEFINE_ANE_FUNCTION( flurry_setUserGender )
 {
     NSString* userGender;
-    if( [typeConverter FREGetObject:argv[0] asString:&userGender ] == FRE_OK )
+    if( [flurryTypeConverter FREGetObject:argv[0] asString:&userGender ] == FRE_OK )
     {
-        [FlurryAnalytics setGender:userGender];
+        [Flurry setGender:userGender];
     }
     return NULL;
 }
@@ -269,7 +269,7 @@ DEFINE_ANE_FUNCTION( flurry_setLocation )
     if( FREGetObjectAsDouble( argv[0], &horizontalAccuracy ) != FRE_OK ) return NULL;
     if( FREGetObjectAsDouble( argv[0], &verticalAccuracy ) != FRE_OK ) return NULL;
         
-    [FlurryAnalytics setLatitude:latitude longitude:longitude horizontalAccuracy:horizontalAccuracy verticalAccuracy:verticalAccuracy];
+    [Flurry setLatitude:latitude longitude:longitude horizontalAccuracy:horizontalAccuracy verticalAccuracy:verticalAccuracy];
     return NULL;
 }
 
@@ -280,11 +280,11 @@ DEFINE_ANE_FUNCTION( flurry_setEventLoggingEnabled )
     {
         if( value == 0 )
         {
-            [FlurryAnalytics setEventLoggingEnabled:NO];
+            [Flurry setEventLoggingEnabled:NO];
         }
         else
         {
-            [FlurryAnalytics setEventLoggingEnabled:YES];
+            [Flurry setEventLoggingEnabled:YES];
         }
     }
     return NULL;
@@ -313,7 +313,7 @@ void FlurryContextInitializer( void* extData, const uint8_t* ctxType, FREContext
 	*numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );
 	*functionsToSet = functionMap;
     
-    typeConverter = [[Flurry_TypeConversion alloc] init];
+    flurryTypeConverter = [[Flurry_TypeConversion alloc] init];
 }
 
 void FlurryContextFinalizer( FREContext ctx )

@@ -4,7 +4,7 @@ This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensi
 
 h3. Version
 
-This is version 0.4.0 of this extension. The compiled extension contains version 3.0.9 of the Flurry Analytics library for iOS and version 2.2.5 of the Flurry Analytics library for Android.
+This is version 0.5.0 of this extension. The compiled extension contains version 4.2.1 of the Flurry Analytics library for iOS and version 3.2.0 of the Flurry Analytics library for Android.
 
 If you wish to use a different version of the Flurry Analytics library, you may do so by following the instructions below to compile the extension.
 

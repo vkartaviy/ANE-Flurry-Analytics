@@ -17,7 +17,7 @@ public class FlurryLogError implements FREFunction
 		{
 			String errorId = args[0].getAsString();
 			String message = args[1].getAsString();
-			FlurryAgent.onError( errorId, message, null );
+			FlurryAgent.onError( errorId, message, "" );
 		}
 		catch ( Exception exception )
 		{

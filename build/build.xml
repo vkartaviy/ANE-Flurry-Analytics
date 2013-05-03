@@ -35,6 +35,7 @@
 		<mkdir dir="../android/temp/zip"/>
 		<unzip src="../android/libs/FlurryAgent.jar" dest="../android/temp/zip"/>
 		<copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
+		<copydir src="../android/temp/zip/org" dest="../android/temp/classes/org"/>
 		
 		<mkdir dir="../temp/android/"/>
 		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar"/>

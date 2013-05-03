@@ -27,7 +27,25 @@
 		private var errorName : String = "testError";
 		private var errorId : String = "1";
 		
-		private var flurryId : String = "5WJJ44XFBYVMB4KHPBV9";
+		private var iosFlurryId : String = "QDZNCV5C7P3XCR2S4KV4";
+		private var androidFlurryId : String = "5WJJ44XFBYVMB4KHPBV9";
+		
+		public function get flurryId() : String
+		{
+			var os : String = Capabilities.version.substr(0,3);
+			if( os == "IOS" )
+			{
+				return iosFlurryId;
+			}
+			else if( os == "AND" )
+			{
+				return androidFlurryId;
+			}
+			else
+			{
+				return "";
+			}
+		}
 
 		public function FlurryExtensionTest()
 		{

@@ -59,8 +59,9 @@
 		<copy todir="../bin/icons">
 		    <fileset dir="./icons"/>
 		</copy>
-
-		<exec executable="${sdk.home}/bin/adt" failonerror="true" dir="../bin">
+		
+		<java jar="${sdk.home}/lib/adt.jar" failonerror="true" dir="../bin" fork="true">
+			<jvmarg line="-Xms1024m -Xmx4096m -XX:MaxPermSize=512m"/>
 			<arg value="-package"/>
 			<arg value="-target"/>
 			<arg value="apk-debug"/>
@@ -76,6 +77,6 @@
 			<arg value="FlurryExtensionTest.swf"/>
 			<arg value="icons"/>
 			<arg line="-extdir ../../bin/"/>
-		</exec>
+		</java>
 	</target>
 </project>
