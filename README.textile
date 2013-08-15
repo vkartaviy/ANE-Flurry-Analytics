@@ -4,31 +4,13 @@ This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensi
 
 h3. Version
 
-This is version 0.5.0 of this extension. The compiled extension contains version 4.2.1 of the Flurry Analytics library for iOS and version 3.2.0 of the Flurry Analytics library for Android.
+This is version 0.5.0 of this extension. The compiled extension contains version 4.2.3 of the Flurry Analytics library for iOS and version 3.2.1 of the Flurry Analytics library for Android.
 
 If you wish to use a different version of the Flurry Analytics library, you may do so by following the instructions below to compile the extension.
 
 h3. Binary files
 
 The bin folder contains the compiled extension and the default swc, which can be used for local testing if required by your development environment (Flash Builder shouldn't need it, but other IDEs may).
-
-h3. Building
-
-If you want to compile the extension from scratch (e.g. to include a different version of the Flurry SDK) this is how to do it.
-
-Requirements - Adobe Air SDK 3.1 or later, XCode IDE, iOS SDK 5.0 or later, Android SDK 2.2 or later, Java SDK, Flurry Analytics iPhone SDK and Flurry Analytics Android SDK, Apache Ant
-
-* iOS
-** Download the Flurry analytics code from your Flurry account.
-** From the iOS Flurry SDK add the downloaded folder FlurryAnalytics (containing FlurryAnalytics.h & libFlurryAnalytics.a) to the ios/FlurryIosExtension folder in the project.
-** Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/FlurryIosExtension folder in the project.
-* Android
-** Download the Flurry analytics code from your Flurry account.
-** From the Android Flurry SDK add the downloaded file FlurryAgent.jar to the android/libs folder in the project.
-** Add the FlashRuntimeExtensions.jar file from the Adobe Air sdk to the android/libs folder in the project.
-* Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
-** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air.
-* Run the ant build script build.xml. This creates the native extension, and default swc file, inside the bin folder.
 
 h3. Using the extension
 
@@ -78,38 +60,10 @@ h3. More info
 
 That's just a starter. All the features of the Flurry api have been implemented. Read the documentation in the Actionscript source code for all the features.
 
-h3. Compiling your project
-
-The extension requires that your project is built against version 5 of the iOS SDK. It doesn't require version 5 at run-time (version 4 is sufficient), but it is required at compile-time.
-
-With Air 3.3 or later, just include the extension in the usual way.
-
-With Air 3.1 or 3.2, your project it must be compiled on a computer running Mac OS X and with version 5 or later of the iOS SDK. Specify the path to the iOS SDK when compiling the project using the functionality built in to your IDE or the platformsdk parameter if building with adt from the command line or a build script.
-
 h3. Developers
 
 * "Stick Sports":http://www.sticksports.com/
 
-h3. Games using this extension
-
-* "Stick Tennis":http://itunes.apple.com/app/stick-tennis/id507086545?ls=1&mt=8
-* "Stick Cricket Super Sixes":http://itunes.apple.com/app/stick-cricket-super-sixes/id483135193?ls=1&mt=8
-
 h2. License
 
-Air Native Extension for Flurry analytics on iOS & Android
-
-Author: Richard Lord
-Owner: Stick Sports Ltd.
-http://www.sticksports.com
-
-Copyright (c) 2011, Stick Sports Ltd.
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-* Neither the name of Stick Sports Ltd. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-  
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+This project is licensed under the "BSD license":https://github.com/StickSports/ANE-Flurry-Analytics/blob/master/LICENSE

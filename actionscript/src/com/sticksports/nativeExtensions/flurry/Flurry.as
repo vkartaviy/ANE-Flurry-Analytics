@@ -150,7 +150,7 @@ package com.sticksports.nativeExtensions.flurry
 				for( var key : String in parameters )
 				{
 					array.push( key );
-					array.push( parameters[key] as String );
+					array.push( String( parameters[key] ) );
 				}
 				initExtension();
 				extensionContext.call( NativeMethods.startTimedEvent, eventName, array );
@@ -173,7 +173,7 @@ package com.sticksports.nativeExtensions.flurry
 				for( var key : String in parameters )
 				{
 					array.push( key );
-					array.push( parameters[key] as String );
+					array.push( String( parameters[key] ) );
 				}
 				initExtension();
 				extensionContext.call( NativeMethods.endTimedEvent, eventName, array );

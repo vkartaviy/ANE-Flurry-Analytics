@@ -3,11 +3,6 @@ temp/*
 test/bin/*
 build.config
 
-# Not licensed for distribution
-FlurryAnalytics.h
-libFlurryAnalytics.a
-FlashRuntimeExtensions.h
-
 # Eclipse FDT
 .settings/*
 .project
