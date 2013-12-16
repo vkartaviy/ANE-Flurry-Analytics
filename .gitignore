@@ -17,8 +17,12 @@ project.properties
 
 # Xcode
 xcuserdata
+*.xccheckout
 
 # OS X
 Icon
 Thumbs.db
 .DS_Store
+
+# IntelliJ IDEA
+.idea

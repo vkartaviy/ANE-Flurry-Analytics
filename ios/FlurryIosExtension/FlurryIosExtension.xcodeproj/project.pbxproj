@@ -13,7 +13,7 @@
 		7997564717316C4700187BD7 /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = 7997564517316C4700187BD7 /* Flurry.h */; };
 		79E4C7FE15A5CE1700FFDEBF /* Flurry_TypeConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 79E4C7FC15A5CE1700FFDEBF /* Flurry_TypeConversion.h */; };
 		79E4C7FF15A5CE1700FFDEBF /* Flurry_TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E4C7FD15A5CE1700FFDEBF /* Flurry_TypeConversion.m */; };
-		79EF554717BD556000170FB8 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79EF554617BD556000170FB8 /* libFlurry_4.2.3.a */; };
+		F0E3B7AE185F4918006A162E /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E3B7AD185F4918006A162E /* libFlurry_4.3.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +24,7 @@
 		7997564517316C4700187BD7 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		79E4C7FC15A5CE1700FFDEBF /* Flurry_TypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry_TypeConversion.h; sourceTree = "<group>"; };
 		79E4C7FD15A5CE1700FFDEBF /* Flurry_TypeConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flurry_TypeConversion.m; sourceTree = "<group>"; };
-		79EF554617BD556000170FB8 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		F0E3B7AD185F4918006A162E /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7940BB87144F2A1A00F7087E /* Foundation.framework in Frameworks */,
-				79EF554717BD556000170FB8 /* libFlurry_4.2.3.a in Frameworks */,
+				F0E3B7AE185F4918006A162E /* libFlurry_4.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 		7940BB93144F2A3400F7087E /* FlurryAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				79EF554617BD556000170FB8 /* libFlurry_4.2.3.a */,
+				F0E3B7AD185F4918006A162E /* libFlurry_4.3.0.a */,
 				7997564517316C4700187BD7 /* Flurry.h */,
 			);
 			path = FlurryAnalytics;
@@ -210,7 +210,7 @@
 				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"$(SRCROOT)/FlurryAnalytics",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -228,7 +228,7 @@
 				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"$(SRCROOT)/FlurryAnalytics",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
